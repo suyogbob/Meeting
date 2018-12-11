@@ -1,0 +1,43 @@
+<div class="container bg-light text-dark">
+  <div class="row">
+    <div class="col-2">
+      <h4> Name: </h4>
+    </div>
+    <div class="col-2">
+      <h4><%= @location.name %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <h4> Quiet: </h4>
+    </div>
+    <div class="col-2">
+      <% if @location.quiet %>
+        <h4><%= "Yes" %></h4>
+      <% else %>
+        <h4><%= "No" %></h4>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <h4> Area: </h4>
+    </div>
+    <div class="col-2">
+      <h4><%= @location.area %></h4>
+    </div>
+  </div>
+</div>
+<div class="container bg-light text-dark">
+  <%= link_to 'Edit', edit_location_path(@location) %> |
+  <%= link_to 'Back', locations_path %>
+</div>
+<br>
+<% if @location.meetings.empty? %>
+  <h5 class="text-center"><%= @location.name %> hasn't hosted any meetings yet.</h5>
+<% else %>
+  <% @location.meetings.each do |meeting| %>
+    <%= render 'meetings/meeting', meeting: meeting %>
+    <br>
+  <% end %>
+<% end %>

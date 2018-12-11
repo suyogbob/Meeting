@@ -1,0 +1,25 @@
+<% if logged_in? %>
+  <h1>Welcome to Rendezvous!</h1>
+  <br>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <% if @meetings.empty? %>
+        <p class="text-center">There aren't any meetings yet, you should create one!</p>
+      <% else %>
+        <% @meetings.each do |meeting| %>
+          <%= render 'meetings/meeting', meeting: meeting %>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <h3><%= link_to "Authorize Rendezvous", redirect_path %></h3>
+  <h5><%= "(Features will be limited without)" %></h5>
+<% else %>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <h1>Welcome to Rendezvous!</h1>
+      <p>Sign up or log in to get started!</p>
+    </div>
+  </div>
+<% end %>

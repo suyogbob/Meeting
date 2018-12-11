@@ -1,0 +1,30 @@
+<h1>Your Events</h1>
+<p>Here is a list of your events</p>
+<table>
+  <div class="row bg-dark text-white">
+    <div class="col">
+      <h5><%= "Event Agenda/Summary" %></h5>
+    </div>
+    <div class="col">
+      <h5><%= "Status" %></h5>
+    </div>
+    <div class="col">
+      <h5><%= "Created" %></h5>
+    </div>
+  </div>
+  <tbody>
+    <% @event_list.items.each do |event| %>
+      <div class="row">
+        <div class="col">
+          <%= event.summary %>
+        </div>
+        <div class="col">
+          <%= event.status %>
+        </div>
+        <div class="col">
+          <h5><%= event.created %></h5>
+        </div>
+      </div>
+    <% end %>
+  </tbody>
+</table>

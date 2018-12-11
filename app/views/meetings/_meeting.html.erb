@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body bg-dark text-white">
+    <span class="card-title">
+      <strong><%= link_to meeting.user.full_name, meeting.user %></strong>
+    </span>
+    <br>
+    <small class="card-subtitle text-muted">Updated <%= time_ago_in_words(meeting.updated_at) %> ago</small>
+    <p class="card-text"><%= "Was at " + meeting.location.name + " with " + meeting.friend.full_name %></p>
+    <% if current_user == meeting.user %>
+      <%= link_to 'Edit', edit_meeting_path(meeting), class: 'card-link' %>
+      <%= link_to 'Delete', meeting, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %>
+    <% end %>
+  </div>
+</div>

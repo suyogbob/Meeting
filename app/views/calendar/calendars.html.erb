@@ -1,0 +1,19 @@
+<h1>Your Calendars</h1>
+<p>Here is a list of your calendars</p>
+<table>
+  <tbody>
+    <% @calendar_list.items.each do |calendar| %>
+      <div class="row">
+        <div class="col">
+          <%= calendar.summary %>
+        </div>
+        <div class="col">
+          <%= link_to 'Get calendar events', "/events/#{calendar.id}" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col">
+      <%= link_to 'Make new event on primary calendar', current_user %>
+    </div>
+  </tbody>
+</table>

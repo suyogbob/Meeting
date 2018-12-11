@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="p-3 mb-2 bg-info text-white"><h1> Meetings </h1></div>
+</div>
+<div class="p-3 mb-2 bg-dark text-white">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <th>User</th>
+      </div>
+      <div class="col">
+        <th>Friend</th>
+      </div>
+      <div class="col">
+        <td>Location</td>
+      </div>
+      <div class="col">
+        <td>Agenda</td>
+      </div>
+      <div class="col">
+        <td>Start Time</td>
+      </div>
+      <div class="col">
+        <td>End Time</td>
+      </div>
+      <div class="col">
+        <td>Link to Page</td>
+      </div>
+      <div class="col">
+        <td>Link to Edit</td>
+      </div>
+      <div class="col">
+        <td>Link to Delete</td>
+      </div>
+    </div>
+
+
+    <% @meetings.each do |meeting| %>
+      <div class="row">
+        <div class="col">
+          <td><%= meeting.user.full_name %></td>
+        </div>
+        <div class="col">
+          <td><%= meeting.friend.full_name %></td>
+        </div>
+        <div class="col">
+          <td><%= meeting.location.name %></td>
+        </div>
+        <div class="col">
+          <td><%= meeting.agenda %></td>
+        </div>
+        <div class="col">
+          <td><%= meeting.start_time %></td>
+        </div>
+        <div class="col">
+          <td><%= meeting.end_time %></td>
+        </div>
+        <div class="col">
+          <td><%= link_to 'Show', meeting %></td>
+        </div>
+        <div class="col">
+          <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+        </div>
+        <div class="col">
+          <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Meeting', new_meeting_path %>

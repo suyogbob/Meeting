@@ -1,0 +1,70 @@
+<div class="p-3 mb-2 bg-light text-dark">
+  <%= form_with(model: meeting, local: true) do |form| %>
+    <% if meeting.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+        <ul>
+        <% meeting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :user %>
+        <%= form.collection_select :user_id, @users, :id, :full_name, prompt: true, id: :meeting_user %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :friend %>
+        <%= form.collection_select :friend_id, @users, :id, :full_name, prompt: true, id: :meeting_friend %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :location %>
+        <%= form.collection_select :location_id, @locations, :id, :name, prompt: true, id: :meeting_location %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :agenda %>
+        <%= form.text_field :agenda, id: :meeting_agenda %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :start_time %>
+        <%= form.datetime_select :start_time, id: :meeting_start_time %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :end_time %>
+        <%= form.datetime_select :end_time, id: :meeting_end_time %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= form.label :state %>
+        <%= form.text_field :state, id: :meeting_state %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>

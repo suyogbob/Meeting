@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="p-3 mb-2 bg-light text-dark"><h2> Users </h2></div>
+</div>
+<div class="p-3 mb-2 bg-dark text-white">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <th class="bg-dark text-white"">Name</th>
+      </div>
+      <div class="col-2">
+        <th class="bg-dark text-white"">Email</th>
+      </div>
+      <div class="col-4">
+        <th class="bg-dark text-white""></th>
+      </div>
+    </div>
+    <% @users.each do |user| %>
+      <div class="row">
+        <div class="col-2">
+          <td><%= link_to user.full_name, user %></td>
+        </div>
+        <div class="col-2">
+          <td><%= user.email %></td>
+        </div>
+        <% if logged_in? && current_user == user %>
+          <div class="col-2">
+            <td><%= link_to 'Edit Profile', edit_user_path(user) %></td>
+          </div>
+          <div class="col-2">
+            <td><%= link_to 'Delete Account', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+        <% elsif logged_in? && current_user.friends.include?(user) %>
+          <div class="col-2">
+            <td><%= link_to 'Remove Friend', delete_friend_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+          <div class="col-2">
+            <td></td>
+          </div>
+        <% elsif logged_in? && current_user.requested_friends.include?(user) %>
+          <div class="col-2">
+            <td><%= link_to 'Cancel Friend Request', delete_friend_user_path(user), method: :delete, data: { confrim: 'Are you sure?' } %></td>
+          </div>
+          <div class="col-2">
+            <td></td>
+          </div>
+        <% elsif logged_in? && current_user.pending_friends.include?(user) %>
+          <div class="col-2">
+            <td><%= link_to 'Accept Friend Request', accept_friend_request_user_path(user), method: :patch %></td>
+          </div>
+          <div class="col-2">
+            <td><%= link_to 'Decline Friend Request', delete_friend_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+        <% elsif logged_in? %>
+          <div class="col-2">
+            <td><%= link_to 'Send Friend Request', send_friend_request_user_path(user), method: :post %></td>
+          </div>
+          <div class="col-2">
+            <td></td>
+          </div>
+        <% else %>
+          <div class="col-2">
+            <td></td>
+          </div>
+          <div class="col-2">
+            <td></td>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<div class="container bg-light text-dark">
+  <%= link_to 'New User', new_user_path %>
+</div>

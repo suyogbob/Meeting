@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="p-3 mb-2 bg-light text-dark"><h2> Locations </h2></div>
+</div>
+
+<div class="p-3 mb-2 bg-dark text-white">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <strong>Name</strong>
+      </div>
+      <div class="col-2">
+        <strong>Quiet</strong>
+      </div>
+      <div class="col-2">
+        <strong>Area</strong>
+      </div>
+      <div class="col-6">
+        <th colspan="3"></th>
+      </div>
+    </div>
+    <% @locations.each do |location| %>
+      <div class="row">
+        <div class="col-2">
+          <td><%= location.name %></td>
+        </div>
+        <div class="col-2">
+          <% if location.quiet %>
+            <td><%= "Yes" %></td>
+          <% else %>
+            <td><%= "No" %></td>
+          <% end %>
+        </div>
+        <div class="col-2">
+          <td><%= location.area %></td>
+        </div>
+        <div class="col-2">
+          <td><%= link_to 'Show', location %></td>
+        </div>
+        <div class="col-2">
+          <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        </div>
+        <div class="col-2">
+          <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="container bg-light text-dark">
+  <%= link_to 'New Location', new_location_path %>
+</div>

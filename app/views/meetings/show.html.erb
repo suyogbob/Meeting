@@ -1,0 +1,39 @@
+<div class="p-3 mb-2 bg-light text-dark">
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @meeting.user.full_name %>
+  </p>
+
+  <p>
+    <strong>Friend:</strong>
+    <%= @meeting.friend.full_name %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @meeting.location.name %>
+  </p>
+
+  <p>
+    <strong>Agenda:</strong>
+    <%= @meeting.agenda %>
+  </p>
+
+  <p>
+    <strong>Start time:</strong>
+    <%= @meeting.start_time %>
+  </p>
+
+  <p>
+    <strong>End time:</strong>
+    <%= @meeting.end_time %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+  <%= link_to 'Back', meetings_path %>
+  <%= link_to 'Calendar Authorize', redirect_path%>
+</div>
