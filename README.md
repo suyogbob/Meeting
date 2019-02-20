@@ -2,7 +2,7 @@
 
 This is an App I built as a Final Project for my Ruby on Rails class. This app uses Google Calendar API and social media interactions to build a friend network and allow you to plan meetings with friends through the app. Planned meetings automatically get added to your Primary Google Calendar. 
 
-Skills showcased:
+* Skills showcased:
 - SQL Database building through rails
 - Multiple Many-to-Many SQL relationships through rails
 - Bootstrap and HTML for front-end
@@ -10,10 +10,12 @@ Skills showcased:
 - Encrypted Authentication
 - REST API usage
 
-Features to be added:
+* Features to be added:
 - Automatic event invites through Google
 - Friend verification for events
 - Variable number of friends invited to an event
+
+Coniguration and setup:
 
 * Ruby version: 2.5.1p57
 
